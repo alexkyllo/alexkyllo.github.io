@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Make Is All You Need">
+<meta itemprop="description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials.">
+<meta itemprop="datePublished" content="2019-12-30T18:03:52-08:00" />
+<meta itemprop="dateModified" content="2019-12-30T18:03:52-08:00" />
+<meta itemprop="wordCount" content="709">
+
+
+
+<meta itemprop="keywords" content="data-science," /><meta property="og:title" content="Make Is All You Need" />
+<meta property="og:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alexkyllo.com/posts/make-is-all-you-need/" />
+<meta property="article:published_time" content="2019-12-30T18:03:52-08:00" />
+<meta property="article:modified_time" content="2019-12-30T18:03:52-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Make Is All You Need"/>
+<meta name="twitter:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Make Is All You Need</title>
+	<link rel="stylesheet" href="https://alexkyllo.com/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://alexkyllo.com">Alex Kyllo</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://alexkyllo.com/posts/">Posts</a>
+				<a href="https://alexkyllo.com/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/alexkyllo" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/alexkyllo" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://linkedin.com/in/alexkyllo" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://alexkyllo.com/posts/">Posts</a></li>
+			<li><a href="https://alexkyllo.com/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 30, 2019</span></div>
+				<h1>Make Is All You Need</h1>
+			</header>
+			<div class="content">
+				<p>As a data analyst mostly working with high level languages and GUI tools,
+I thought of <a href="https://www.gnu.org/software/make/">GNU Make</a> as a tool
+(from 1976!) for building Linux binaries from compiled languages,
+and it didn't occur to me how it could be useful in my workflow. Make is
+usually part of any curriculum for software engineers learning C/C++, but
+I seldom if ever see it mentioned in data science courses or tutorials.</p>
+<p>Today, I use Make for all of my software and data science projects, and I
+consider it the most important tool for reproducibility. It ships with
+Linux and Mac, and there is a <a href="http://gnuwin32.sourceforge.net/packages/make.htm">Windows installer</a>
+available. I love that it's language-agnostic, so it's perfect for teams
+where different people use R, Python, or other languages for their analysis code.
+It also gives you a &ldquo;single point of contact&rdquo; for all the scripts and commands
+that need tobe run for your project, so you can just type <code>make</code> or
+<code>make [task name]</code> instead of having to remember and re-type each command.</p>
+<p>The <a href="https://www.gnu.org/software/make/manual/make.html">GNU Make Manual</a>
+is quite approachable while also providing great detail, but in a nutshell,
+you create a file called <code>Makefile</code> in your project directory and add to it
+a set of &ldquo;rules&rdquo; for producing output files from input files, in this form:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">targets </span><span style="color:#f92672">:</span> prerequisites
+    recipe
+</code></pre></div><p>A &ldquo;target&rdquo; and a &ldquo;prerequisite&rdquo; are usually filenames, but can also be just
+names for tasks (called &ldquo;phony&rdquo; targets).</p>
+<p>So why is this useful for data science projects?</p>
+<p>Data analysis code typically involves five steps for processing data:</p>
+<ol>
+<li>Getting it</li>
+<li>Cleaning it</li>
+<li>Exploring it</li>
+<li>Modeling it</li>
+<li>Interpreting it</li>
+</ol>
+<p>Without a disciplined approach, a typical R or Python script or notebook file
+will do all of these steps together, perhaps interleaved, making it difficult
+to pull apart these steps apart so that they can be executed separately.</p>
+<p>Why is it important to separate them? Some steps may process large quantities of
+data, so you don't want to re-run everything each time you change your script.
+Caching intermediate results saves you a lot of time as you're developing.</p>
+<p>Also, if you want to visualize your data with
+<a href="https://ggplot2.tidyverse.org/">ggplot2</a> before training a predictive model
+with <a href="https://keras.io/">Keras</a>,
+it's easiest to separate these steps into
+different scripts in different languages, rather than doing something
+complicated like spawning a Python subprocess from within R or vice versa.</p>
+<p>Here's an example of what a Makefile might look like, for generating a paper
+written in LaTeX, containing two plots generated by an R script and a Python
+script, from a CSV file created by a SQL database query:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">default </span><span style="color:#f92672">:</span> paper.pdf
+
+<span style="color:#a6e22e">paper.pdf </span><span style="color:#f92672">:</span> paper.tex figure-01.png figure-02.png
+    pdflatex paper.tex
+
+<span style="color:#a6e22e">figure-01.png </span><span style="color:#f92672">:</span> plot.R data.csv
+    Rscript plot.R
+
+<span style="color:#a6e22e">figure-02.png </span><span style="color:#f92672">:</span> plot.py data.csv
+    python plot.py
+
+<span style="color:#a6e22e">data.csv</span><span style="color:#f92672">:</span> query.sql
+    sql2csv --db <span style="color:#e6db74">&#34;sqlite:///database.db&#34;</span> query.sql
+</code></pre></div><p>Given this Makefile, when you type <code>make</code>, it will execute each of these
+recipes in dependency order, and then if you type <code>make</code> again, it will
+do nothing, because the dependencies haven't changed. Make looks at the
+file modified timestamps to see which steps actually need to be redone.
+If you change the <code>query.sql</code> file and type <code>make</code> again, it will rerun
+everything because that's the first item in the dependency chain, but if you
+only change the <code>paper.tex</code> file, then only the
+recipe for <code>paper.pdf</code> will be rerun the next time you type <code>make</code>, because
+nothing upstream of it changed. This is an incredible time-saver when some of
+your recipes take a long time to run, as is often the case with data science projects.</p>
+<p>There isn't really an accepted data science code project structure or framework.
+The closest thing might be <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
+(which also utilizes a Makefile), though it's Python-specific and I haven't seen
+it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn't
+matter that much how you structure your directories or even what language you use,
+as it will encourage you to break up your analysis scripts into a pipeline of small,
+dependent steps with cached results. Then when a colleague picks up your project,
+just looking at the Makefile will give them a clear idea of how everything works.
+So use Make for your data science projects and encourage your coworkers to do the
+same&ndash;you will thank each other!</p>
+
+			</div>
+
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://alexkyllo.com/tags/data-science">data-science</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>709 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-12-30 18:03 -0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://alexkyllo.com/posts/reboot/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Reboot</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2019 <a href="https://alexkyllo.com">Alex Kyllo</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://alexkyllo.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://alexkyllo.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-38850327-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>
