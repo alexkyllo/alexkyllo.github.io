@@ -11,11 +11,11 @@
 <meta itemprop="description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials.">
 <meta itemprop="datePublished" content="2019-12-30T18:03:52-08:00" />
 <meta itemprop="dateModified" content="2019-12-30T18:03:52-08:00" />
-<meta itemprop="wordCount" content="709">
+<meta itemprop="wordCount" content="711">
 
 
 
-<meta itemprop="keywords" content="data-science," /><meta property="og:title" content="Make Is All You Need" />
+<meta itemprop="keywords" content="data-science,tools,reproducibility," /><meta property="og:title" content="Make Is All You Need" />
 <meta property="og:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://alexkyllo.com/posts/make-is-all-you-need/" />
@@ -84,7 +84,7 @@ Linux and Mac, and there is a <a href="http://gnuwin32.sourceforge.net/packages/
 available. I love that it's language-agnostic, so it's perfect for teams
 where different people use R, Python, or other languages for their analysis code.
 It also gives you a &ldquo;single point of contact&rdquo; for all the scripts and commands
-that need tobe run for your project, so you can just type <code>make</code> or
+in your project, so you can just type <code>make</code> or
 <code>make [task name]</code> instead of having to remember and re-type each command.</p>
 <p>The <a href="https://www.gnu.org/software/make/manual/make.html">GNU Make Manual</a>
 is quite approachable while also providing great detail, but in a nutshell,
@@ -94,7 +94,7 @@ a set of &ldquo;rules&rdquo; for producing output files from input files, in thi
     recipe
 </code></pre></div><p>A &ldquo;target&rdquo; and a &ldquo;prerequisite&rdquo; are usually filenames, but can also be just
 names for tasks (called &ldquo;phony&rdquo; targets).</p>
-<p>So why is this useful for data science projects?</p>
+<p>So why is this so useful for data science projects?</p>
 <p>Data analysis code typically involves five steps for processing data:</p>
 <ol>
 <li>Getting it</li>
@@ -105,13 +105,13 @@ names for tasks (called &ldquo;phony&rdquo; targets).</p>
 </ol>
 <p>Without a disciplined approach, a typical R or Python script or notebook file
 will do all of these steps together, perhaps interleaved, making it difficult
-to pull apart these steps apart so that they can be executed separately.</p>
+to pull the steps apart so that they can be executed separately.</p>
 <p>Why is it important to separate them? Some steps may process large quantities of
 data, so you don't want to re-run everything each time you change your script.
 Caching intermediate results saves you a lot of time as you're developing.</p>
-<p>Also, if you want to visualize your data with
-<a href="https://ggplot2.tidyverse.org/">ggplot2</a> before training a predictive model
-with <a href="https://keras.io/">Keras</a>,
+<p>Also, if you have mutli-language scenarios, say you want to visualize your data
+with <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+before training a predictive model with <a href="https://keras.io/">Keras</a>,
 it's easiest to separate these steps into
 different scripts in different languages, rather than doing something
 complicated like spawning a Python subprocess from within R or vice versa.</p>
@@ -141,8 +141,10 @@ only change the <code>paper.tex</code> file, then only the
 recipe for <code>paper.pdf</code> will be rerun the next time you type <code>make</code>, because
 nothing upstream of it changed. This is an incredible time-saver when some of
 your recipes take a long time to run, as is often the case with data science projects.</p>
-<p>There isn't really an accepted data science code project structure or framework.
-The closest thing might be <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
+<p>There isn't really an accepted standard data science code project structure
+or framework.
+The closest thing might be
+<a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
 (which also utilizes a Makefile), though it's Python-specific and I haven't seen
 it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn't
 matter that much how you structure your directories or even what language you use,
@@ -157,9 +159,9 @@ same&ndash;you will thank each other!</p>
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://alexkyllo.com/tags/data-science">data-science</a></span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://alexkyllo.com/tags/data-science">data-science</a></span><span class="tag"><a href="https://alexkyllo.com/tags/tools">tools</a></span><span class="tag"><a href="https://alexkyllo.com/tags/reproducibility">reproducibility</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>709 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>711 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-12-30 18:03 -0800</p>
 			</footer>
 		</article>

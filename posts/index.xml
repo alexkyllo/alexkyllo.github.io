@@ -28,7 +28,7 @@ Linux and Mac, and there is a <a href="http://gnuwin32.sourceforge.net/packages/
 available. I love that it's language-agnostic, so it's perfect for teams
 where different people use R, Python, or other languages for their analysis code.
 It also gives you a &ldquo;single point of contact&rdquo; for all the scripts and commands
-that need tobe run for your project, so you can just type <code>make</code> or
+in your project, so you can just type <code>make</code> or
 <code>make [task name]</code> instead of having to remember and re-type each command.</p>
 <p>The <a href="https://www.gnu.org/software/make/manual/make.html">GNU Make Manual</a>
 is quite approachable while also providing great detail, but in a nutshell,
@@ -38,7 +38,7 @@ a set of &ldquo;rules&rdquo; for producing output files from input files, in thi
     recipe
 </code></pre></div><p>A &ldquo;target&rdquo; and a &ldquo;prerequisite&rdquo; are usually filenames, but can also be just
 names for tasks (called &ldquo;phony&rdquo; targets).</p>
-<p>So why is this useful for data science projects?</p>
+<p>So why is this so useful for data science projects?</p>
 <p>Data analysis code typically involves five steps for processing data:</p>
 <ol>
 <li>Getting it</li>
@@ -49,13 +49,13 @@ names for tasks (called &ldquo;phony&rdquo; targets).</p>
 </ol>
 <p>Without a disciplined approach, a typical R or Python script or notebook file
 will do all of these steps together, perhaps interleaved, making it difficult
-to pull apart these steps apart so that they can be executed separately.</p>
+to pull the steps apart so that they can be executed separately.</p>
 <p>Why is it important to separate them? Some steps may process large quantities of
 data, so you don't want to re-run everything each time you change your script.
 Caching intermediate results saves you a lot of time as you're developing.</p>
-<p>Also, if you want to visualize your data with
-<a href="https://ggplot2.tidyverse.org/">ggplot2</a> before training a predictive model
-with <a href="https://keras.io/">Keras</a>,
+<p>Also, if you have mutli-language scenarios, say you want to visualize your data
+with <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+before training a predictive model with <a href="https://keras.io/">Keras</a>,
 it's easiest to separate these steps into
 different scripts in different languages, rather than doing something
 complicated like spawning a Python subprocess from within R or vice versa.</p>
@@ -85,8 +85,10 @@ only change the <code>paper.tex</code> file, then only the
 recipe for <code>paper.pdf</code> will be rerun the next time you type <code>make</code>, because
 nothing upstream of it changed. This is an incredible time-saver when some of
 your recipes take a long time to run, as is often the case with data science projects.</p>
-<p>There isn't really an accepted data science code project structure or framework.
-The closest thing might be <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
+<p>There isn't really an accepted standard data science code project structure
+or framework.
+The closest thing might be
+<a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
 (which also utilizes a Makefile), though it's Python-specific and I haven't seen
 it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn't
 matter that much how you structure your directories or even what language you use,
