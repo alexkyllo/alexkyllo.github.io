@@ -18,7 +18,7 @@
       <pubDate>Mon, 30 Dec 2019 18:03:52 -0800</pubDate>
       
       <guid>https://alexkyllo.com/posts/make-is-all-you-need/</guid>
-      <description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
+      <description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&amp;rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
     </item>
     
   </channel>

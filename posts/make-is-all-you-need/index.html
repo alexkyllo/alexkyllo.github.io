@@ -8,7 +8,7 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Make Is All You Need">
-<meta itemprop="description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials.">
+<meta itemprop="description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials.">
 <meta itemprop="datePublished" content="2019-12-30T18:03:52-08:00" />
 <meta itemprop="dateModified" content="2019-12-30T18:03:52-08:00" />
 <meta itemprop="wordCount" content="759">
@@ -16,14 +16,14 @@
 
 
 <meta itemprop="keywords" content="data-science,tools,reproducibility," /><meta property="og:title" content="Make Is All You Need" />
-<meta property="og:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials." />
+<meta property="og:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://alexkyllo.com/posts/make-is-all-you-need/" />
 <meta property="article:published_time" content="2019-12-30T18:03:52-08:00" />
 <meta property="article:modified_time" content="2019-12-30T18:03:52-08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Make Is All You Need"/>
-<meta name="twitter:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials."/>
+<meta name="twitter:description" content="As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C&#43;&#43;, but I seldom if ever see it mentioned in data science courses or tutorials."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -75,13 +75,13 @@
 				<p>As a data analyst mostly working with high level languages and GUI tools,
 I thought of <a href="https://www.gnu.org/software/make/">GNU Make</a> as a tool
 (from 1976!) for building Linux binaries from compiled languages,
-and it didn't occur to me how it could be useful in my workflow. Make is
+and it didn&rsquo;t occur to me how it could be useful in my workflow. Make is
 usually part of any curriculum for software engineers learning C/C++, but
 I seldom if ever see it mentioned in data science courses or tutorials.</p>
 <p>Today, I use Make for all of my software and data science projects, and I
 consider it the most important tool for reproducibility. It ships with
 Linux and Mac, and there is a <a href="http://gnuwin32.sourceforge.net/packages/make.htm">Windows installer</a>
-available. I love that it's language-agnostic, so it's perfect for teams
+available. I love that it&rsquo;s language-agnostic, so it&rsquo;s perfect for teams
 where different people use R, Python, or other languages for their analysis code.
 It also gives you a &ldquo;single point of contact&rdquo; for all the scripts and commands
 in your project, so you can just type <code>make</code> or
@@ -107,15 +107,15 @@ names for tasks (called &ldquo;phony&rdquo; targets).</p>
 will do all of these steps together, perhaps interleaved, making it difficult
 to pull the steps apart so that they can be executed separately.</p>
 <p>Why is it important to separate them? Some steps may process large quantities of
-data, so you don't want to re-run everything each time you change your script.
-Caching intermediate results saves you a lot of time as you're developing.</p>
+data, so you don&rsquo;t want to re-run everything each time you change your script.
+Caching intermediate results saves you a lot of time as you&rsquo;re developing.</p>
 <p>Also, if you have mutli-language scenarios, say you want to visualize your data
 with <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
 before training a predictive model with <a href="https://keras.io/">Keras</a>,
-it's easiest to separate these steps into
+it&rsquo;s easiest to separate these steps into
 different scripts in different languages, rather than doing something
 complicated like spawning a Python subprocess from within R or vice versa.</p>
-<p>Here's an example of what a Makefile might look like, for generating a paper
+<p>Here&rsquo;s an example of what a Makefile might look like, for generating a paper
 written in LaTeX, containing two plots generated by an R script and a Python
 script, from a CSV file created by a SQL database query:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">default </span><span style="color:#f92672">:</span> paper.pdf
@@ -133,28 +133,28 @@ script, from a CSV file created by a SQL database query:</p>
     sql2csv --db <span style="color:#e6db74">&#34;sqlite:///database.db&#34;</span> query.sql
 </code></pre></div><p>Given this Makefile, when you type <code>make</code>, it will execute each of these
 recipes in dependency order, and then if you type <code>make</code> again, it will
-do nothing, because the dependencies haven't changed. Make looks at the
+do nothing, because the dependencies haven&rsquo;t changed. Make looks at the
 file modified timestamps to see which steps actually need to be redone.
 If you change the <code>query.sql</code> file and type <code>make</code> again, it will rerun
-everything because that's the first item in the dependency chain, but if you
+everything because that&rsquo;s the first item in the dependency chain, but if you
 only change the <code>paper.tex</code> file, then only the
 recipe for <code>paper.pdf</code> will be rerun the next time you type <code>make</code>, because
 nothing upstream of it changed. This is an incredible time-saver when some of
 your recipes take a long time to run, as is often the case with data science projects.
-I've seen many other tools designed to solve this problem, most of them
+I&rsquo;ve seen many other tools designed to solve this problem, most of them
 language-specific and much more complex to learn and use than Make.</p>
-<p>As far as how to structure a new project, there isn't really an accepted standard
+<p>As far as how to structure a new project, there isn&rsquo;t really an accepted standard
 data science code project structure or framework.
 The closest thing might be
 <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
-(which also utilizes a Makefile), though it's Python-specific and I haven't seen
-it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn't
+(which also utilizes a Makefile), though it&rsquo;s Python-specific and I haven&rsquo;t seen
+it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn&rsquo;t
 really matter that much how you structure your directories or even what language you use,
 as thinking in terms of Make recipes will encourage you to break up your analysis
 scripts into a pipeline of small,
 dependent, repeatable steps with cached results. Then when a colleague picks up
 your project to review your work or enhance it, just looking at the Makefile will
-give them a clear idea of how it's put together.
+give them a clear idea of how it&rsquo;s put together.
 So use Make for your data science projects and encourage your coworkers to do the
 same&ndash;you will thank each other!</p>
 
@@ -170,6 +170,9 @@ same&ndash;you will thank each other!</p>
 			</footer>
 		</article>
 		<div class="post-nav thin">
+			<a class="next-post" href="https://alexkyllo.com/posts/database-learning/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Database Learning Resources</span>
+			</a>
 			<a class="prev-post" href="https://alexkyllo.com/posts/reboot/">
 				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Reboot</span>
 			</a>
@@ -179,7 +182,7 @@ same&ndash;you will thank each other!</p>
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2019 <a href="https://alexkyllo.com">Alex Kyllo</a></p>
+		<p>&copy; 2020 <a href="https://alexkyllo.com">Alex Kyllo</a></p>
 		<p>
 			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://alexkyllo.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
 		</p>

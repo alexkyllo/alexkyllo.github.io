@@ -6,8 +6,67 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Alex Kyllo 2020</copyright>
-		<lastBuildDate>Mon, 30 Dec 2019 18:03:52 -0800</lastBuildDate>
+		<lastBuildDate>Sat, 09 May 2020 11:04:29 -0700</lastBuildDate>
 		<atom:link href="https://alexkyllo.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Database Learning Resources</title>
+			<link>https://alexkyllo.com/posts/database-learning/</link>
+			<pubDate>Sat, 09 May 2020 11:04:29 -0700</pubDate>
+			
+			<guid>https://alexkyllo.com/posts/database-learning/</guid>
+			<description>Over the last few years working in analytics and data science, I&amp;rsquo;ve developed a strong interest in the internal workings of database engines, particularly distributed database for analytical workloads. Here I&amp;rsquo;m going to build a list of computer science concepts and learning resources that I am finding helpful in building understanding of how these systems work and how to implement them.
+File I/O Concepts  On Disk I/O a series of blog posts by Alex Petrov, explaining the different methods of file I/O in Linux (buffered, direct, memory-mapped, asynchronous, vectored) and their use cases in the context of database applications, as well as on-disk data structures (SSTables, B+ Trees, Log-Structured Merge Trees)  Probabilistic Data Structures  Bloom Filter A hash bitmap for probabilistic answers to set membership queries (true/false with no false negatives) HyperLogLog A hash based algorithm for fast approximate cardinality (distinct count) estimation Count Min Sketch an approximate frequency table similar to a counting Bloom filter  On-Disk Data Structures  LSM Tree Paper Log Structured Merge Trees&amp;ndash;trees of immutable sorted runs of on-disk data that are periodically merged using external merge sort Google BigTable Paper Application of LSM Trees  Distributed Consensus Algorithms  The Raft Consensus Algorithm Implementing Raft by Eli Bendersky  Comprehensive Database Concept Books  Database System Concepts Database Internals Designing Data Intensive Applications  Open Courses  CMU 15-445 Database Systems covers basics of on-disk database system implementation CMU 15-721 Advanced Database Systems covers advanced topics in in-memory database implementation, with emphasis on concurrency control and optimizations.</description>
+			<content type="html"><![CDATA[<p>Over the last few years working in analytics and data science, I&rsquo;ve developed a
+strong interest in the internal workings of database engines, particularly
+distributed database for analytical workloads. Here I&rsquo;m going to build a list of
+computer science concepts and learning resources that I am finding helpful in
+building understanding of how these systems work and how to implement them.</p>
+<h1 id="file-io-concepts">File I/O Concepts</h1>
+<ul>
+<li><a href="https://medium.com/databasss/on-disk-io-part-1-flavours-of-io-8e1ace1de017">On Disk I/O</a>
+a series of blog posts by Alex Petrov, explaining the different methods of
+file I/O in Linux (buffered, direct, memory-mapped, asynchronous, vectored)
+and their use cases in the context of database applications, as well as on-disk
+data structures (SSTables, B+ Trees, Log-Structured Merge Trees)</li>
+</ul>
+<h2 id="probabilistic-data-structures">Probabilistic Data Structures</h2>
+<ul>
+<li><a href="https://www.jasondavies.com/bloomfilter/">Bloom Filter</a> A hash bitmap for
+probabilistic answers to set membership queries (true/false with no false negatives)</li>
+<li><a href="http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf">HyperLogLog</a> A hash based
+algorithm for fast approximate cardinality (distinct count) estimation</li>
+<li><a href="https://redislabs.com/blog/count-min-sketch-the-art-and-science-of-estimating-stuff/">Count Min Sketch</a>
+an approximate frequency table similar to a counting Bloom filter</li>
+</ul>
+<h1 id="on-disk-data-structures">On-Disk Data Structures</h1>
+<ul>
+<li><a href="http://paperhub.s3.amazonaws.com/18e91eb4db2114a06ea614f0384f2784.pdf">LSM Tree Paper</a>
+Log Structured Merge Trees&ndash;trees of immutable sorted runs of on-disk data that are periodically
+merged using external merge sort</li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf">Google BigTable Paper</a> Application of LSM Trees</li>
+</ul>
+<h1 id="distributed-consensus-algorithms">Distributed Consensus Algorithms</h1>
+<ul>
+<li><a href="https://raft.github.io/">The Raft Consensus Algorithm</a></li>
+<li><a href="https://eli.thegreenplace.net/2020/implementing-raft-part-0-introduction/">Implementing Raft by Eli Bendersky</a></li>
+</ul>
+<h1 id="comprehensive-database-concept-books">Comprehensive Database Concept Books</h1>
+<ul>
+<li><a href="https://www.db-book.com/db7/index.html">Database System Concepts</a></li>
+<li><a href="https://learning.oreilly.com/library/view/database-internals/9781492040330/">Database Internals</a></li>
+<li><a href="https://learning.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/">Designing Data Intensive Applications</a></li>
+</ul>
+<h1 id="open-courses">Open Courses</h1>
+<ul>
+<li><a href="https://15445.courses.cs.cmu.edu/fall2019/">CMU 15-445 Database Systems</a>
+covers basics of on-disk database system implementation</li>
+<li><a href="https://15721.courses.cs.cmu.edu/spring2020/">CMU 15-721 Advanced Database Systems</a>
+covers advanced topics in in-memory database implementation, with emphasis on concurrency
+control and optimizations.</li>
+</ul>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Make Is All You Need</title>
@@ -15,17 +74,17 @@
 			<pubDate>Mon, 30 Dec 2019 18:03:52 -0800</pubDate>
 			
 			<guid>https://alexkyllo.com/posts/make-is-all-you-need/</guid>
-			<description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
+			<description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&amp;rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
 			<content type="html"><![CDATA[<p>As a data analyst mostly working with high level languages and GUI tools,
 I thought of <a href="https://www.gnu.org/software/make/">GNU Make</a> as a tool
 (from 1976!) for building Linux binaries from compiled languages,
-and it didn't occur to me how it could be useful in my workflow. Make is
+and it didn&rsquo;t occur to me how it could be useful in my workflow. Make is
 usually part of any curriculum for software engineers learning C/C++, but
 I seldom if ever see it mentioned in data science courses or tutorials.</p>
 <p>Today, I use Make for all of my software and data science projects, and I
 consider it the most important tool for reproducibility. It ships with
 Linux and Mac, and there is a <a href="http://gnuwin32.sourceforge.net/packages/make.htm">Windows installer</a>
-available. I love that it's language-agnostic, so it's perfect for teams
+available. I love that it&rsquo;s language-agnostic, so it&rsquo;s perfect for teams
 where different people use R, Python, or other languages for their analysis code.
 It also gives you a &ldquo;single point of contact&rdquo; for all the scripts and commands
 in your project, so you can just type <code>make</code> or
@@ -51,15 +110,15 @@ names for tasks (called &ldquo;phony&rdquo; targets).</p>
 will do all of these steps together, perhaps interleaved, making it difficult
 to pull the steps apart so that they can be executed separately.</p>
 <p>Why is it important to separate them? Some steps may process large quantities of
-data, so you don't want to re-run everything each time you change your script.
-Caching intermediate results saves you a lot of time as you're developing.</p>
+data, so you don&rsquo;t want to re-run everything each time you change your script.
+Caching intermediate results saves you a lot of time as you&rsquo;re developing.</p>
 <p>Also, if you have mutli-language scenarios, say you want to visualize your data
 with <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
 before training a predictive model with <a href="https://keras.io/">Keras</a>,
-it's easiest to separate these steps into
+it&rsquo;s easiest to separate these steps into
 different scripts in different languages, rather than doing something
 complicated like spawning a Python subprocess from within R or vice versa.</p>
-<p>Here's an example of what a Makefile might look like, for generating a paper
+<p>Here&rsquo;s an example of what a Makefile might look like, for generating a paper
 written in LaTeX, containing two plots generated by an R script and a Python
 script, from a CSV file created by a SQL database query:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">default </span><span style="color:#f92672">:</span> paper.pdf
@@ -77,28 +136,28 @@ script, from a CSV file created by a SQL database query:</p>
     sql2csv --db <span style="color:#e6db74">&#34;sqlite:///database.db&#34;</span> query.sql
 </code></pre></div><p>Given this Makefile, when you type <code>make</code>, it will execute each of these
 recipes in dependency order, and then if you type <code>make</code> again, it will
-do nothing, because the dependencies haven't changed. Make looks at the
+do nothing, because the dependencies haven&rsquo;t changed. Make looks at the
 file modified timestamps to see which steps actually need to be redone.
 If you change the <code>query.sql</code> file and type <code>make</code> again, it will rerun
-everything because that's the first item in the dependency chain, but if you
+everything because that&rsquo;s the first item in the dependency chain, but if you
 only change the <code>paper.tex</code> file, then only the
 recipe for <code>paper.pdf</code> will be rerun the next time you type <code>make</code>, because
 nothing upstream of it changed. This is an incredible time-saver when some of
 your recipes take a long time to run, as is often the case with data science projects.
-I've seen many other tools designed to solve this problem, most of them
+I&rsquo;ve seen many other tools designed to solve this problem, most of them
 language-specific and much more complex to learn and use than Make.</p>
-<p>As far as how to structure a new project, there isn't really an accepted standard
+<p>As far as how to structure a new project, there isn&rsquo;t really an accepted standard
 data science code project structure or framework.
 The closest thing might be
 <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Cookiecutter Data Science</a>
-(which also utilizes a Makefile), though it's Python-specific and I haven't seen
-it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn't
+(which also utilizes a Makefile), though it&rsquo;s Python-specific and I haven&rsquo;t seen
+it used &ldquo;in the wild&rdquo; yet. If you use a Makefile in your project, though, it doesn&rsquo;t
 really matter that much how you structure your directories or even what language you use,
 as thinking in terms of Make recipes will encourage you to break up your analysis
 scripts into a pipeline of small,
 dependent, repeatable steps with cached results. Then when a colleague picks up
 your project to review your work or enhance it, just looking at the Makefile will
-give them a clear idea of how it's put together.
+give them a clear idea of how it&rsquo;s put together.
 So use Make for your data science projects and encourage your coworkers to do the
 same&ndash;you will thank each other!</p>
 ]]></content>
@@ -110,9 +169,9 @@ same&ndash;you will thank each other!</p>
 			<pubDate>Mon, 30 Dec 2019 17:16:15 -0800</pubDate>
 			
 			<guid>https://alexkyllo.com/posts/reboot/</guid>
-			<description>I&#39;ve read many times that the key to success is just to do things and tell people.
+			<description>I&amp;rsquo;ve read many times that the key to success is just to do things and tell people.
 In the new decade, I am going to put much more effort into the tell people part.</description>
-			<content type="html"><![CDATA[<p>I've read many times that the key to success is just to <em><a href="http://carl.flax.ie/dothingstellpeople.html">do things and tell people</a>.</em></p>
+			<content type="html"><![CDATA[<p>I&rsquo;ve read many times that the key to success is just to <em><a href="http://carl.flax.ie/dothingstellpeople.html">do things and tell people</a>.</em></p>
 <p>In the new decade, I am going to put much more effort into the <em>tell people</em> part.</p>
 ]]></content>
 		</item>

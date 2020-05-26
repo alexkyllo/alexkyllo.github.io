@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alex Kyllo 2020</copyright>
-    <lastBuildDate>Mon, 30 Dec 2019 18:03:52 -0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 17:30:18 -0800</lastBuildDate>
     
 	<atom:link href="https://alexkyllo.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Database Learning Resources</title>
+      <link>https://alexkyllo.com/posts/database-learning/</link>
+      <pubDate>Sat, 09 May 2020 11:04:29 -0700</pubDate>
+      
+      <guid>https://alexkyllo.com/posts/database-learning/</guid>
+      <description>Over the last few years working in analytics and data science, I&amp;rsquo;ve developed a strong interest in the internal workings of database engines, particularly distributed database for analytical workloads. Here I&amp;rsquo;m going to build a list of computer science concepts and learning resources that I am finding helpful in building understanding of how these systems work and how to implement them.
+File I/O Concepts  On Disk I/O a series of blog posts by Alex Petrov, explaining the different methods of file I/O in Linux (buffered, direct, memory-mapped, asynchronous, vectored) and their use cases in the context of database applications, as well as on-disk data structures (SSTables, B+ Trees, Log-Structured Merge Trees)  Probabilistic Data Structures  Bloom Filter A hash bitmap for probabilistic answers to set membership queries (true/false with no false negatives) HyperLogLog A hash based algorithm for fast approximate cardinality (distinct count) estimation Count Min Sketch an approximate frequency table similar to a counting Bloom filter  On-Disk Data Structures  LSM Tree Paper Log Structured Merge Trees&amp;ndash;trees of immutable sorted runs of on-disk data that are periodically merged using external merge sort Google BigTable Paper Application of LSM Trees  Distributed Consensus Algorithms  The Raft Consensus Algorithm Implementing Raft by Eli Bendersky  Comprehensive Database Concept Books  Database System Concepts Database Internals Designing Data Intensive Applications  Open Courses  CMU 15-445 Database Systems covers basics of on-disk database system implementation CMU 15-721 Advanced Database Systems covers advanced topics in in-memory database implementation, with emphasis on concurrency control and optimizations.</description>
+    </item>
     
     <item>
       <title>Make Is All You Need</title>
@@ -18,7 +28,7 @@
       <pubDate>Mon, 30 Dec 2019 18:03:52 -0800</pubDate>
       
       <guid>https://alexkyllo.com/posts/make-is-all-you-need/</guid>
-      <description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&#39;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
+      <description>As a data analyst mostly working with high level languages and GUI tools, I thought of GNU Make as a tool (from 1976!) for building Linux binaries from compiled languages, and it didn&amp;rsquo;t occur to me how it could be useful in my workflow. Make is usually part of any curriculum for software engineers learning C/C++, but I seldom if ever see it mentioned in data science courses or tutorials.</description>
     </item>
     
     <item>
@@ -27,9 +37,9 @@
       <pubDate>Mon, 30 Dec 2019 17:30:18 -0800</pubDate>
       
       <guid>https://alexkyllo.com/about/</guid>
-      <description>Hi, I&#39;m Alex. I work as a data scientist for Microsoft Azure, where I analyze telemetry and run experiments to discover and test methods of improving the developer user experience.
+      <description>Hi, I&amp;rsquo;m Alex. I work as a data scientist for Microsoft Azure, where I analyze telemetry and run experiments to discover and test methods of improving the developer user experience.
 Prior to this, I worked as a business data analyst, sales &amp;amp; marketing analyst, and IT systems analyst at a couple of different logistics companies.
-I&#39;m currently a student in the Graduate Certificate in Software Design and Development program at the University of Washington Bothell.</description>
+I&amp;rsquo;m currently a student in the Graduate Certificate in Software Design and Development program at the University of Washington Bothell.</description>
     </item>
     
     <item>
@@ -38,7 +48,7 @@ I&#39;m currently a student in the Graduate Certificate in Software Design and D
       <pubDate>Mon, 30 Dec 2019 17:16:15 -0800</pubDate>
       
       <guid>https://alexkyllo.com/posts/reboot/</guid>
-      <description>I&#39;ve read many times that the key to success is just to do things and tell people.
+      <description>I&amp;rsquo;ve read many times that the key to success is just to do things and tell people.
 In the new decade, I am going to put much more effort into the tell people part.</description>
     </item>
     
