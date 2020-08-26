@@ -82,7 +82,26 @@ install the dependencies.</p>
 <h2 id="testing">Testing</h2>
 <p>Getting started with my test suite was a snap. I just had to open
 <code>tests/test_feature_grouper.py</code> and start writing functions with
-assert statements, and run them with <code>pytest</code>.</p>
+assert statements, and run them with <code>pytest</code>. That made it easy to
+get started with test-driven development.</p>
+<h2 id="coding">Coding</h2>
+<p>The <code>feature_grouper/feature_grouper.py</code> file is only 131 lines including
+comments, so there isn&rsquo;t a whole lot going on&ndash;the key point is that the class
+<code>FeatureGrouper</code> extends <code>BaseEstimator</code> and <code>TransformerMixin</code> from the
+<code>sklearn.base</code> module, and implements its own <code>fit</code>, <code>transform</code>, and
+<code>inverse_transform</code> methods, to make it basically a drop-in replacement for
+an existing scikit-learn transformer class like
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a>, so that it can be used in a
+<a href="https://scikit-learn.org/stable/modules/classes.html?highlight=pipeline#module-sklearn.pipeline">sklearn.pipeline.Pipeline</a>.</p>
+<p>I also want to mention that I find it better to write the class and function
+docstrings as I go, rather than writing all the code first and going
+back to document it later. The latter always feels like way more work.
+I went with
+<a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">Sphinx-style docstrings</a>
+but for my next package I will probably try
+<a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html">Numpy-style docstrings</a>
+as they are a little more readable in plaintext and seem more popular in the
+Python community.</p>
 <h2 id="documentation">Documentation</h2>
 <p>Sphinx is the go-to for generating code documentation for Python
 packages. It includes a <code>sphinx-quickstart</code> CLI to help you get
@@ -90,8 +109,8 @@ started.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir docs
 cd docs
 sphinx-quickstart
-</code></pre></div><p>Then, so that Sphinx could find my code to autodocument it I had to
-add these lines to conf.py:</p>
+</code></pre></div><p>Then, so that Sphinx could find my code to autogenerate documentation pages
+from the docstrings I had to add these lines to conf.py:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- Path setup --------------------------------------------------------------</span>
 
 <span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
