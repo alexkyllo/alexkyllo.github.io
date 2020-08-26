@@ -57,8 +57,15 @@ tree
     ├── __init__.py
     └── test_feature_grouper.py
 
-</code></pre></div><h2 id="installing-dependencies">Installing dependencies</h2>
-<p>The next step was to install the dependencies I knew I would need to
+</code></pre></div><p>The <code>pyproject.toml</code> file replaces <code>setup.py</code> for Poetry projects, so
+I opened that file and updated the package description field.</p>
+<p><code>poetry install</code> auto-created a virtual environment the first time,
+and installed the base dependencies, generating a <code>poetry.lock</code> file
+that records the entire package dependency tree with the compatible version
+numbers.</p>
+<p><code>poetry shell</code> activates the virtual environment and <code>exit</code> deactivates it.</p>
+<h2 id="installing-dependencies">Installing dependencies</h2>
+<p>The next step was to add and install the dependencies I knew I would need to
 develop the package.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry add scipy numpy scikit-learn
 poetry add --dev black pylint wrapt Sphinx sphinx-rtd-theme
@@ -66,6 +73,12 @@ poetry add --dev black pylint wrapt Sphinx sphinx-rtd-theme
 and <code>scikit-learn</code>, meanwhile I use <code>black</code> and <code>pylint</code> for code
 formatting and linting, and Sphinx for documentation, so I install
 those as dev dependencies.</p>
+<p><code>poetry add</code> adds the dependencies to <code>pyproject.toml</code>, solves
+the dependency graph, updatess <code>poetry.lock</code> and installs the
+packages into the virtual environemnt, all in one step.</p>
+<p><code>poetry export --without-hashes &gt; requirements.txt</code> generates a
+<code>requirements.txt</code> file, which can be used by other tools that need to
+install the dependencies.</p>
 <h2 id="testing">Testing</h2>
 <p>Getting started with my test suite was a snap. I just had to open
 <code>tests/test_feature_grouper.py</code> and start writing functions with
@@ -89,7 +102,22 @@ add these lines to conf.py:</p>
 <span style="color:#f92672">import</span> sys
 
 sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#34;..&#34;</span>))
-</code></pre></div><p>Then to generate the documentation from my class and function docstrings,
+</code></pre></div><p>I like the Read The Docs theme for documentation so I wanted to include that theme
+as well as autodoc to  generate the documentation from my class and function docstrings,
+so I added the <code>sphinx.ext.autodoc</code> and <code>sphinx_rtd_theme</code> extensions in <code>conf.py</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- General configuration ---------------------------------------------------</span>
+
+<span style="color:#75715e"># Add any Sphinx extension module names here, as strings. They can be</span>
+<span style="color:#75715e"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
+<span style="color:#75715e"># ones.</span>
+extensions <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#34;sphinx.ext.todo&#34;</span>,
+    <span style="color:#e6db74">&#34;sphinx.ext.viewcode&#34;</span>,
+    <span style="color:#e6db74">&#34;sphinx.ext.autodoc&#34;</span>,
+    <span style="color:#e6db74">&#34;sphinx_rtd_theme&#34;</span>,
+]
+
+</code></pre></div><p>Then, to provide the content pages for the docs site,
 I added two files, <code>docs/overview.rst</code> and <code>docs/reference.rst</code>. In the
 overview file I put a description of the package and a code sample, and in the
 reference file I put the following:</p>
@@ -99,11 +127,24 @@ reference file I put the following:</p>
 .. automodule:: feature_grouper.feature_grouper
    :members:
 
-
-</code></pre><p>readthedocs failed to build my docs the first time, because it was
-looking for a file called &ldquo;content&rdquo; by default. I needed to add
+</code></pre><p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
+and you can preview the HTML output in your browser.</p>
+<p>After pushing my package to GitHub,
+I published my documentation to <a href="https://readthedocs.org/">Read The Docs</a>
+because they have free hosting that is pretty easy to configure.
+RTD failed to build my docs the first time, because it was
+looking for a file called &ldquo;content&rdquo; by default. I just needed to add
 another setting to docs/conf.py, <code>master_doc = &quot;index&quot;</code> in order to
-get it to find the right file.</p>
+get it to find the right file. At that point, the documentation was done.</p>
+<h2 id="publishing-to-pypi">Publishing to PyPI</h2>
+<p>Creating an account on <a href="https://pypi.org/">PyPI</a> is pretty straightforward, you
+just sign up through their web interface. I turned Two-Factor Authentication on
+and added an API token in Account settings.</p>
+<p>One configuration was needed to set up Poetry to publish my package, using the
+API token I obtained from the PyPI site:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry config pypi-token.pypi <span style="color:#f92672">[</span>api-token<span style="color:#f92672">]</span>
+</code></pre></div><p>Once that was set, after typing <code>poetry publish</code> my package was live on PyPI
+within seconds!</p>
 ]]></content>
 		</item>
 		
