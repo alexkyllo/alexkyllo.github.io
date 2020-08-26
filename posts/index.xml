@@ -146,13 +146,18 @@ reference file I put the following:</p>
 .. automodule:: feature_grouper.feature_grouper
    :members:
 
-</code></pre><p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
-and you can preview the HTML output in your browser.</p>
+</code></pre><p>The <code>automodule</code> thing tells Sphinx to read all the class and function docstrings
+in your Python code file, and generate API documentation for them.</p>
+<p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
+and you can preview the HTML output in your browser. Each time you change a docstring,
+just do <code>make html</code> again and it will rebuild the docs.</p>
 <p>After pushing my package to GitHub,
 I published my documentation to <a href="https://readthedocs.org/">Read The Docs</a>
 because they have free hosting that is pretty easy to configure.
 RTD failed to build my docs the first time, because it was
-looking for a file called &ldquo;content&rdquo; by default. I just needed to add
+looking for a file called &ldquo;content&rdquo; by default, but I had named my file
+&ldquo;index&rdquo;&ndash;had to make a trip to StackOverflow
+for that one. It turned out I just needed to add
 another setting to docs/conf.py, <code>master_doc = &quot;index&quot;</code> in order to
 get it to find the right file. At that point, the documentation was done.</p>
 <h2 id="publishing-to-pypi">Publishing to PyPI</h2>

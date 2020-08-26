@@ -13,7 +13,7 @@ The package itself is almost trivial, a couple of functions and a scikit-learn t
 I thought I&rsquo;d write a post to detail the end-to-end development process to remind myself the next time I want to do it, and in case anyone else finds this useful.">
 <meta itemprop="datePublished" content="2020-08-24T21:56:31-07:00" />
 <meta itemprop="dateModified" content="2020-08-24T21:56:31-07:00" />
-<meta itemprop="wordCount" content="962">
+<meta itemprop="wordCount" content="1022">
 
 
 
@@ -206,13 +206,18 @@ reference file I put the following:</p>
 .. automodule:: feature_grouper.feature_grouper
    :members:
 
-</code></pre><p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
-and you can preview the HTML output in your browser.</p>
+</code></pre><p>The <code>automodule</code> thing tells Sphinx to read all the class and function docstrings
+in your Python code file, and generate API documentation for them.</p>
+<p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
+and you can preview the HTML output in your browser. Each time you change a docstring,
+just do <code>make html</code> again and it will rebuild the docs.</p>
 <p>After pushing my package to GitHub,
 I published my documentation to <a href="https://readthedocs.org/">Read The Docs</a>
 because they have free hosting that is pretty easy to configure.
 RTD failed to build my docs the first time, because it was
-looking for a file called &ldquo;content&rdquo; by default. I just needed to add
+looking for a file called &ldquo;content&rdquo; by default, but I had named my file
+&ldquo;index&rdquo;&ndash;had to make a trip to StackOverflow
+for that one. It turned out I just needed to add
 another setting to docs/conf.py, <code>master_doc = &quot;index&quot;</code> in order to
 get it to find the right file. At that point, the documentation was done.</p>
 <h2 id="publishing-to-pypi">Publishing to PyPI<a href="#publishing-to-pypi" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
@@ -229,7 +234,7 @@ within seconds!</p>
 
 			<hr class="post-end">
 			<footer class="post-info">
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>962 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1022 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-08-24 21:56 -0700</p>
 			</footer>
 		</article>
