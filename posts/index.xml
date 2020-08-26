@@ -169,8 +169,10 @@ and added an API token in Account settings.</p>
 <p>One configuration was needed to set up Poetry to publish my package, using the
 API token I obtained from the PyPI site:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry config pypi-token.pypi <span style="color:#f92672">[</span>api-token<span style="color:#f92672">]</span>
-</code></pre></div><p>Once that was set, after typing <code>poetry publish</code> my package was live on PyPI
-within seconds!</p>
+</code></pre></div><p>Once that was set, I just needed two more commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry build <span style="color:#75715e"># to create the .tar.gz and .whl files in a dist/ folder</span>
+poetry publish <span style="color:#75715e"># to upload the project to PyPI</span>
+</code></pre></div><p>and then my package was live on PyPI within seconds!</p>
 ]]></content>
 		</item>
 		
