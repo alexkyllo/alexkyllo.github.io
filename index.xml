@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Easy Python Package Publishing with Poetry</title>
+      <link>https://alexkyllo.com/posts/python-package/</link>
+      <pubDate>Mon, 24 Aug 2020 21:56:31 -0700</pubDate>
+      
+      <guid>https://alexkyllo.com/posts/python-package/</guid>
+      <description>I just published my first Python package on PyPI, called feature-grouper, a data science package for a simple form of dimensionality reduction.
+The package itself is almost trivial, a couple of functions and a scikit-learn transformer class, but it&amp;rsquo;s something I anticipate reusing on future projects, so I wanted to be able to just import it rather than copy-pasting the code.
+I thought I&amp;rsquo;d write a post to detail the end-to-end development process so that I remember myself next time I want to do it, and in case anyone else finds this useful.</description>
+    </item>
+    
+    <item>
       <title>Database Learning Resources</title>
       <link>https://alexkyllo.com/posts/database-learning/</link>
       <pubDate>Sat, 09 May 2020 11:04:29 -0700</pubDate>

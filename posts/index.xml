@@ -6,8 +6,106 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Alex Kyllo 2020</copyright>
-		<lastBuildDate>Sat, 09 May 2020 11:04:29 -0700</lastBuildDate>
+		<lastBuildDate>Mon, 24 Aug 2020 21:56:31 -0700</lastBuildDate>
 		<atom:link href="https://alexkyllo.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Easy Python Package Publishing with Poetry</title>
+			<link>https://alexkyllo.com/posts/python-package/</link>
+			<pubDate>Mon, 24 Aug 2020 21:56:31 -0700</pubDate>
+			
+			<guid>https://alexkyllo.com/posts/python-package/</guid>
+			<description>I just published my first Python package on PyPI, called feature-grouper, a data science package for a simple form of dimensionality reduction.
+The package itself is almost trivial, a couple of functions and a scikit-learn transformer class, but it&amp;rsquo;s something I anticipate reusing on future projects, so I wanted to be able to just import it rather than copy-pasting the code.
+I thought I&amp;rsquo;d write a post to detail the end-to-end development process so that I remember myself next time I want to do it, and in case anyone else finds this useful.</description>
+			<content type="html"><![CDATA[<p>I just published my first Python package on PyPI, called
+<a href="https://pypi.org/project/feature-grouper/">feature-grouper</a>,
+a data science package for a simple form of dimensionality reduction.</p>
+<p>The package itself is almost trivial, a couple of functions and
+a scikit-learn transformer class, but it&rsquo;s something I anticipate
+reusing on future projects, so I wanted to be able to just import it
+rather than copy-pasting the code.</p>
+<p>I thought I&rsquo;d write a post to detail the end-to-end development
+process so that I remember myself next time I want to do it, and in
+case anyone else finds this useful. I used
+<a href="https://python-poetry.org">Poetry</a> for package management and while
+the process was pretty smooth and straightforward, there were a couple
+of gotchas that deserve explanation.</p>
+<h2 id="installing-the-tools">Installing the tools</h2>
+<p>Installing Python (on Ubuntu):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.8 python3-pip python3.8-dev python3.8-venv make
+python3.8 -m pip install --upgrade pip setuptools wheel
+</code></pre></div><p>Installing Poetry:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+</code></pre></div><h2 id="initializing-the-project">Initializing the project</h2>
+<p>I used the <code>poetry new</code> command to create the project structure.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry new feature-grouper
+</code></pre></div><p>Poetry includes pytest by default (a good choice) and gives you a
+nice, simple package project directory like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd feature-grouper
+tree
+
+.
+├── feature_grouper
+│   ├── feature_grouper.py
+│   ├── __init__.py
+├── pyproject.toml
+├── README.rst
+└── tests
+    ├── __init__.py
+    └── test_feature_grouper.py
+
+</code></pre></div><h2 id="installing-dependencies">Installing dependencies</h2>
+<p>The next step was to install the dependencies I knew I would need to
+develop the package.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry add scipy numpy scikit-learn
+poetry add --dev black pylint wrapt Sphinx sphinx-rtd-theme
+</code></pre></div><p>The package itself depends on <code>scipy</code>, <code>numpy</code>
+and <code>scikit-learn</code>, meanwhile I use <code>black</code> and <code>pylint</code> for code
+formatting and linting, and Sphinx for documentation, so I install
+those as dev dependencies.</p>
+<h2 id="testing">Testing</h2>
+<p>Getting started with my test suite was a snap. I just had to open
+<code>tests/test_feature_grouper.py</code> and start writing functions with
+assert statements, and run them with <code>pytest</code>.</p>
+<h2 id="documentation">Documentation</h2>
+<p>Sphinx is the go-to for generating code documentation for Python
+packages. It includes a <code>sphinx-quickstart</code> CLI to help you get
+started.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir docs
+cd docs
+sphinx-quickstart
+</code></pre></div><p>Then, so that Sphinx could find my code to autodocument it I had to
+add these lines to conf.py:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- Path setup --------------------------------------------------------------</span>
+
+<span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span style="color:#75715e"># add these directories to sys.path here. If the directory is relative to the</span>
+<span style="color:#75715e"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+<span style="color:#75715e">#</span>
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> sys
+
+sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#34;..&#34;</span>))
+</code></pre></div><p>Then to generate the documentation from my class and function docstrings,
+I added two files, <code>docs/overview.rst</code> and <code>docs/reference.rst</code>. In the
+overview file I put a description of the package and a code sample, and in the
+reference file I put the following:</p>
+<pre><code>``feature_grouper`` API reference
+=================================
+
+.. automodule:: feature_grouper.feature_grouper
+   :members:
+
+
+</code></pre><p>readthedocs failed to build my docs the first time, because it was
+looking for a file called &ldquo;content&rdquo; by default. I needed to add
+another setting to docs/conf.py, <code>master_doc = &quot;index&quot;</code> in order to
+get it to find the right file.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Database Learning Resources</title>
