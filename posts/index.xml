@@ -17,20 +17,22 @@
 			<guid>https://alexkyllo.com/posts/python-package/</guid>
 			<description>I just published my first Python package on PyPI, called feature-grouper, a data science package for a simple form of dimensionality reduction.
 The package itself is almost trivial, a couple of functions and a scikit-learn transformer class, but it&amp;rsquo;s something I anticipate reusing on future projects, so I wanted to be able to just import it rather than copy-pasting the code.
-I thought I&amp;rsquo;d write a post to detail the end-to-end development process to remind myself the next time I want to do it, and in case anyone else finds this useful.</description>
+I thought I&amp;rsquo;d write a post to detail the end-to-end development process to serve as a reminder to myself the next time I want to write a package, and in case anyone else finds this useful.</description>
 			<content type="html"><![CDATA[<p>I just published my first Python package on PyPI, called
-<a href="https://pypi.org/project/feature-grouper/">feature-grouper</a>,
+<a href="https://github.com/alexkyllo/feature-grouper">feature-grouper</a>,
 a data science package for a simple form of dimensionality reduction.</p>
 <p>The package itself is almost trivial, a couple of functions and
 a scikit-learn transformer class, but it&rsquo;s something I anticipate
 reusing on future projects, so I wanted to be able to just import it
 rather than copy-pasting the code.</p>
 <p>I thought I&rsquo;d write a post to detail the end-to-end development
-process to remind myself the next time I want to do it, and in
-case anyone else finds this useful. I used
-<a href="https://python-poetry.org">Poetry</a> for package management and while
-the process was pretty smooth and straightforward, there were a couple
-of gotchas that deserve explanation.</p>
+process to serve as a reminder to myself the next time I want to write a
+package, and in case anyone else finds this useful. I used
+<a href="https://python-poetry.org">Poetry</a> for package management, which made the
+experience nicer by unifying several different command line tools
+(pip, virtualenv, twine). While the overall process was pretty
+straightforward, there were a couple of parts that I felt were non-obvious
+and deserve explanation.</p>
 <h2 id="installing-the-tools">Installing the tools</h2>
 <p>Installing Python (on Ubuntu):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo add-apt-repository ppa:deadsnakes/ppa
