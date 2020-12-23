@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://alexkyllo.com/posts/python-package/</loc>
-    <lastmod>2020-08-24T21:56:31-07:00</lastmod>
+    <loc>https://alexkyllo.com/</loc>
+    <lastmod>2020-12-22T21:42:53-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://alexkyllo.com/posts/fake-faces/</loc>
+    <lastmod>2020-12-22T21:42:53-08:00</lastmod>
   </url>
   
   <url>
     <loc>https://alexkyllo.com/posts/</loc>
-    <lastmod>2020-08-24T21:56:31-07:00</lastmod>
+    <lastmod>2020-12-22T21:42:53-08:00</lastmod>
   </url>
   
   <url>
@@ -44,11 +49,6 @@
   
   <url>
     <loc>https://alexkyllo.com/about/</loc>
-    <lastmod>2019-12-30T17:30:18-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://alexkyllo.com/</loc>
     <lastmod>2019-12-30T17:30:18-08:00</lastmod>
   </url>
   

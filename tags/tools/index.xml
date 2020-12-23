@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alex Kyllo 2020</copyright>
-    <lastBuildDate>Mon, 30 Dec 2019 18:03:52 -0800</lastBuildDate>
-    
-	<atom:link href="https://alexkyllo.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 30 Dec 2019 18:03:52 -0800</lastBuildDate><atom:link href="https://alexkyllo.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Make Is All You Need</title>
       <link>https://alexkyllo.com/posts/make-is-all-you-need/</link>

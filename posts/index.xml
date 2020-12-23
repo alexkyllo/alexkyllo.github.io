@@ -6,173 +6,92 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Alex Kyllo 2020</copyright>
-		<lastBuildDate>Mon, 24 Aug 2020 21:56:31 -0700</lastBuildDate>
+		<lastBuildDate>Tue, 22 Dec 2020 21:42:53 -0800</lastBuildDate>
 		<atom:link href="https://alexkyllo.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
-			<title>Easy Python Package Publishing with Poetry</title>
-			<link>https://alexkyllo.com/posts/python-package/</link>
-			<pubDate>Mon, 24 Aug 2020 21:56:31 -0700</pubDate>
+			<title>Fighting Fakes Fairly</title>
+			<link>https://alexkyllo.com/posts/fake-faces/</link>
+			<pubDate>Tue, 22 Dec 2020 21:42:53 -0800</pubDate>
 			
-			<guid>https://alexkyllo.com/posts/python-package/</guid>
-			<description>I just published my first Python package on PyPI, called feature-grouper, a data science package for a simple form of dimensionality reduction.
-The package itself is almost trivial, a couple of functions and a scikit-learn transformer class, but it&amp;rsquo;s something I anticipate reusing on future projects, so I wanted to be able to just import it rather than copy-pasting the code.
-I thought I&amp;rsquo;d write a post to detail the end-to-end development process to serve as a reminder to myself the next time I want to write a package, and in case anyone else finds this useful.</description>
-			<content type="html"><![CDATA[<p>I just published my first Python package on PyPI, called
-<a href="https://github.com/alexkyllo/feature-grouper">feature-grouper</a>,
-a data science package for a simple form of dimensionality reduction.</p>
-<p>The package itself is almost trivial, a couple of functions and
-a scikit-learn transformer class, but it&rsquo;s something I anticipate
-reusing on future projects, so I wanted to be able to just import it
-rather than copy-pasting the code.</p>
-<p>I thought I&rsquo;d write a post to detail the end-to-end development
-process to serve as a reminder to myself the next time I want to write a
-package, and in case anyone else finds this useful. I used
-<a href="https://python-poetry.org">Poetry</a> for package management, which made the
-experience nicer by unifying several different command line tools
-(pip, virtualenv, twine). While the overall process was pretty
-straightforward, there were a couple of parts that I felt were non-obvious
-and deserve explanation.</p>
-<h2 id="installing-the-tools">Installing the tools</h2>
-<p>Installing Python (on Ubuntu):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.8 python3-pip python3.8-dev python3.8-venv make
-python3.8 -m pip install --upgrade pip setuptools wheel
-</code></pre></div><p>Installing Poetry:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-</code></pre></div><h2 id="initializing-the-project">Initializing the project</h2>
-<p>I used the <code>poetry new</code> command to create the project structure.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry new feature-grouper
-</code></pre></div><p>Poetry includes pytest by default (a good choice) and gives you a
-nice, simple package project directory like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd feature-grouper
-tree
-
-.
-├── feature_grouper
-│   ├── feature_grouper.py
-│   ├── __init__.py
-├── pyproject.toml
-├── README.rst
-└── tests
-    ├── __init__.py
-    └── test_feature_grouper.py
-
-</code></pre></div><p>The <code>pyproject.toml</code> file replaces <code>setup.py</code> for Poetry projects, so
-I opened that file and updated the package description field.</p>
-<p><code>poetry install</code> auto-created a virtual environment the first time,
-and installed the base dependencies, generating a <code>poetry.lock</code> file
-that records the entire package dependency tree with the compatible version
-numbers.</p>
-<p><code>poetry shell</code> activates the virtual environment and <code>exit</code> deactivates it.</p>
-<h2 id="installing-dependencies">Installing dependencies</h2>
-<p>The next step was to add and install the dependencies I knew I would need to
-develop the package.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry add scipy numpy scikit-learn
-poetry add --dev black pylint wrapt Sphinx sphinx-rtd-theme
-</code></pre></div><p>The package itself depends on <code>scipy</code>, <code>numpy</code>
-and <code>scikit-learn</code>, meanwhile I use <code>black</code> and <code>pylint</code> for code
-formatting and linting, and Sphinx for documentation, so I install
-those as dev dependencies.</p>
-<p><code>poetry add</code> adds the dependencies to <code>pyproject.toml</code>, solves
-the dependency graph, updatess <code>poetry.lock</code> and installs the
-packages into the virtual environemnt, all in one step.</p>
-<p><code>poetry export --without-hashes &gt; requirements.txt</code> generates a
-<code>requirements.txt</code> file, which can be used by other tools that need to
-install the dependencies.</p>
-<h2 id="testing">Testing</h2>
-<p>Getting started with my test suite was a snap. I just had to open
-<code>tests/test_feature_grouper.py</code> and start writing functions with
-assert statements, and run them with <code>pytest</code>. That made it easy to
-get started with test-driven development.</p>
-<h2 id="coding">Coding</h2>
-<p>The <code>feature_grouper/feature_grouper.py</code> file is only 131 lines including
-comments, so there isn&rsquo;t a whole lot going on&ndash;the key point is that the class
-<code>FeatureGrouper</code> extends <code>BaseEstimator</code> and <code>TransformerMixin</code> from the
-<code>sklearn.base</code> module, and implements its own <code>fit</code>, <code>transform</code>, and
-<code>inverse_transform</code> methods, to make it basically a drop-in replacement for
-an existing scikit-learn transformer class like
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a>, so that it can be used in a
-<a href="https://scikit-learn.org/stable/modules/classes.html?highlight=pipeline#module-sklearn.pipeline">sklearn.pipeline.Pipeline</a>.</p>
-<p>I also want to mention that I find it better to write the class and function
-docstrings as I go, rather than writing all the code first and going
-back to document it later. The latter always feels like way more work.
-I went with
-<a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">Sphinx-style docstrings</a>
-but for my next package I will probably try
-<a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html">Numpy-style docstrings</a>
-as they are a little more readable in plaintext and seem more popular in the
-Python community.</p>
-<h2 id="documentation">Documentation</h2>
-<p>Sphinx is the go-to for generating code documentation for Python
-packages. It includes a <code>sphinx-quickstart</code> CLI to help you get
-started.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir docs
-cd docs
-sphinx-quickstart
-</code></pre></div><p>Then, so that Sphinx could find my code to autogenerate documentation pages
-from the docstrings I had to add these lines to conf.py:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- Path setup --------------------------------------------------------------</span>
-
-<span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
-<span style="color:#75715e"># add these directories to sys.path here. If the directory is relative to the</span>
-<span style="color:#75715e"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
-<span style="color:#75715e">#</span>
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> sys
-
-sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#34;..&#34;</span>))
-</code></pre></div><p>I like the Read The Docs theme for documentation so I wanted to include that theme
-as well as autodoc to  generate the documentation from my class and function docstrings,
-so I added the <code>sphinx.ext.autodoc</code> and <code>sphinx_rtd_theme</code> extensions in <code>conf.py</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -- General configuration ---------------------------------------------------</span>
-
-<span style="color:#75715e"># Add any Sphinx extension module names here, as strings. They can be</span>
-<span style="color:#75715e"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
-<span style="color:#75715e"># ones.</span>
-extensions <span style="color:#f92672">=</span> [
-    <span style="color:#e6db74">&#34;sphinx.ext.todo&#34;</span>,
-    <span style="color:#e6db74">&#34;sphinx.ext.viewcode&#34;</span>,
-    <span style="color:#e6db74">&#34;sphinx.ext.autodoc&#34;</span>,
-    <span style="color:#e6db74">&#34;sphinx_rtd_theme&#34;</span>,
-]
-
-</code></pre></div><p>Then, to provide the content pages for the docs site,
-I added two files, <code>docs/overview.rst</code> and <code>docs/reference.rst</code>. In the
-overview file I put a description of the package and a code sample, and in the
-reference file I put the following:</p>
-<pre><code>``feature_grouper`` API reference
-=================================
-
-.. automodule:: feature_grouper.feature_grouper
-   :members:
-
-</code></pre><p>The <code>automodule</code> thing tells Sphinx to read all the class and function docstrings
-in your Python code file, and generate API documentation for them.</p>
-<p>Sphinx includes a Makefile so you can build the docs site by just typing <code>make html</code>
-and you can preview the HTML output in your browser. Each time you change a docstring,
-just do <code>make html</code> again and it will rebuild the docs.</p>
-<p>After pushing my package to GitHub,
-I published my documentation to <a href="https://readthedocs.org/">Read The Docs</a>
-because they have free hosting that is pretty easy to configure.
-RTD failed to build my docs the first time, because it was
-looking for a file called &ldquo;content&rdquo; by default, but I had named my file
-&ldquo;index&rdquo;&ndash;had to make a trip to StackOverflow
-for that one. It turned out I just needed to add
-another setting to docs/conf.py, <code>master_doc = &quot;index&quot;</code> in order to
-get it to find the right file. At that point, the documentation was done.</p>
-<h2 id="publishing-to-pypi">Publishing to PyPI</h2>
-<p>Creating an account on <a href="https://pypi.org/">PyPI</a> is pretty straightforward, you
-just sign up through their web interface. I turned Two-Factor Authentication on
-and added an API token in Account settings.</p>
-<p>One configuration was needed to set up Poetry to publish my package, using the
-API token I obtained from the PyPI site:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry config pypi-token.pypi <span style="color:#f92672">[</span>api-token<span style="color:#f92672">]</span>
-</code></pre></div><p>Once that was set, I just needed two more commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry build <span style="color:#75715e"># to create the .tar.gz and .whl files in a dist/ folder</span>
-poetry publish <span style="color:#75715e"># to upload the project to PyPI</span>
-</code></pre></div><p>and then my package was live on PyPI within seconds!</p>
+			<guid>https://alexkyllo.com/posts/fake-faces/</guid>
+			<description>I just wrapped up the first quarter of my master&amp;rsquo;s degree program. In my project-driven Machine Learning class, I chose to work on a fake face detection task. I picked this topic mostly because I had no experience with computer vision or convolutional neural networks (CNNs) and wanted to try something totally new to me, plus I knew that there was an obvious ethics component to facial recognition AI and wanted to feature that in my work.</description>
+			<content type="html"><![CDATA[<p>I just wrapped up the first quarter of my master&rsquo;s degree program. In
+my project-driven Machine Learning class, I chose to work on a fake
+face detection task. I picked this topic mostly because I had no
+experience with computer vision or convolutional neural networks
+(CNNs) and wanted to try something totally new to me, plus I knew that
+there was an obvious ethics component to facial recognition AI and
+wanted to feature that in my work.</p>
+<p>I wasn&rsquo;t expecting the topic to be <em>quite</em> so timely, but after Google
+fired Timnit Gebru for questioning both their AI ethics and their
+diversity, equality and inclusion practices, I saw <a href="https://twitter.com/Mantzarlis/status/1338220767042002945?s=19">a jaw-dropping
+thread</a>
+pop up in my Twitter feed. Someone had created a fake account, using
+GAN generated fake face profile images, claiming to be one of
+Dr. Gebru&rsquo;s former colleagues, in order to smear her reputation.</p>
+<p><img src="/alexios-thread.png" alt=""></p>
+<p><img src="/jeff-jeffries.jpeg" alt=""></p>
+<p><img src="/julia-smith-kleinberg.jpeg" alt=""></p>
+<p>Even worse, a professor emeritus from the UW CSE department, Pedro
+Domingos, engaged with and even retweeted this account, apparently not
+realizing it was a fake:</p>
+<p><img src="/julia-smith-kleinberg-thread.jpeg" alt=""></p>
+<p>This made it very clear to me that &ldquo;deep fakes&rdquo; is <em>not</em> a toy problem
+or a hypothetical future problem, but that the technology is being
+deployed <em>right now</em> to spread disinformation online. So this points
+to the need for technology to detect and flag fakes, in order to keep
+up in the &ldquo;arms race.&rdquo;</p>
+<p>My project team took the obvious approach to the problem&ndash;get a
+dataset consisting of real human face images and another dataset of
+fake ones generated by <a href="https://github.com/NVlabs/stylegan">StyleGAN</a>,
+and then train a CNN model to distinguish between the two
+datasets. While we got promising results (&gt;97% test accuracy) on the
+original datasets, we knew that face image datasets tend to have
+selection bias toward middle-aged, white faces, so we wanted to test
+whether our model performed equally well on subjects of different
+demographics.</p>
+<p>In order to conduct that fairness assessment, we needed a
+demographically labeled dataset of both real and fake faces, so we
+took the <a href="https://github.com/joojs/fairface">FairFace</a> dataset, then
+used
+<a href="https://github.com/eladrich/pixel2style2pixel">pixel2style2pixel</a> as
+an autoencoder, to embed each image into the latent space of the
+StyleGAN network and then extract it back out into an image.</p>
+<p>The results of this process were pretty interesting. The
+pixel2style2pixel model was able to reconstruct faces very similar to
+the originals, removing things like hands partially covering faces and
+bruises and blemishes, though it sometimes made mistakes like
+misinterpreting head coverings as hair. Here are some samples:</p>
+<p><img src="/fair2fake.jpg" alt=""></p>
+<p>Here&rsquo;s my own face before and after running through the face falsifier
+network, which feels pretty eerie to look at:</p>
+<p><img src="/alex-fake.jpg" alt=""></p>
+<p>What we found in the process, though, was that our model trained on
+the first dataset <strong>totally</strong> failed to generalize to the second
+dataset, with accuracy only in the mid 50s, only marginally better
+than a coin toss. So we decided not to bother with a fairness
+assessment on a clearly useless model.  Instead, we retrained and
+scored the model on a combined dataset drawn from both datasets. We
+found that this new model performed better than our first model on
+both the original dataset and the combined dataset, probably due to
+the additional training examples, and it also performed with almost
+exactly the same metrics across demographic splits of male/female,
+white/non-white, black/non-black, elderly/non-elderly, and
+child/non-child.</p>
+<p>There&rsquo;s a ton more work to be done in the space, and I still have
+doubts about whether the model really detected something intrinsic to
+fake faces that will generalizes well across more datasets. But for
+now, I think this experience demonstrates the value of using a
+diverse, heterogenous input dataset, testing the model on truly
+out-of-sample data, and considering and planning for a model fairness
+assessment up front.</p>
+<p>Our code is available on GitHub: <a href="https://github.com/alexkyllo/fake-faces/">https://github.com/alexkyllo/fake-faces/</a></p>
+<p>Winter quarter will be a little change of pace as I&rsquo;m taking High
+Performance Computing, which will focus on GPU programming with CUDA.
+I&rsquo;m pretty excited for it because I hope to brush up on my
+computational linear algebra and better understand what is actually
+happening when I train a neural network model on my GPU.</p>
 ]]></content>
 		</item>
 		
