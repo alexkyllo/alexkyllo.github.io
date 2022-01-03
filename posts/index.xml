@@ -6,8 +6,255 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Alex Kyllo 2020</copyright>
-		<lastBuildDate>Tue, 22 Dec 2020 21:42:53 -0800</lastBuildDate>
+		<lastBuildDate>Sun, 02 Jan 2022 22:16:24 -0800</lastBuildDate>
 		<atom:link href="https://alexkyllo.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Questions to ask to keep your data science projects on track</title>
+			<link>https://alexkyllo.com/posts/questions-to-ask/</link>
+			<pubDate>Sun, 02 Jan 2022 22:16:24 -0800</pubDate>
+			
+			<guid>https://alexkyllo.com/posts/questions-to-ask/</guid>
+			<description>Data science projects fail a lot. It&amp;rsquo;s highly speculative work, so as a data scientist, some crucial career skills are knowing how to assess the viability of a project, when to cut your losses, and why things didn&amp;rsquo;t work out, so that you can learn from it and adjust your approach. I&amp;rsquo;ve put together a list of questions to ask at each stage in a project&amp;rsquo;s lifecycle, to help you avoid wasting your precious time on projects that are not going to make it.</description>
+			<content type="html"><![CDATA[<p>Data science projects fail a lot. It&rsquo;s highly speculative work, so as a data
+scientist, some crucial career skills are knowing how to assess the viability of
+a project, when to cut your losses, and why things didn&rsquo;t work out, so that you
+can learn from it and adjust your approach. I&rsquo;ve put together a list of
+questions to ask at each stage in a project&rsquo;s lifecycle, to help you avoid
+wasting your precious time on projects that are not going to make it.</p>
+<p>I&rsquo;m assuming the general sort of projects that I have experience with: small
+business data science projects (think one to a few people over one to a few
+months), which we can roughly break down into a generic five-phase lifecycle:</p>
+<ol>
+<li>Scoping</li>
+<li>Analysis</li>
+<li>Development</li>
+<li>Validation</li>
+<li>Release</li>
+</ol>
+<p>This is not a prescriptive procedure but a rubric to help you assess progress
+and viability. If you&rsquo;re not sure how to move your project forward or whether
+it&rsquo;s even worth investing further time into, the answers to these questions may
+help you decide the best next steps.</p>
+<h2 id="scoping">Scoping</h2>
+<p>Have discussions with the proposed project&rsquo;s customers and write a one-pager
+that answers the following questions:</p>
+<ul>
+<li>What is the business decision or problem motivating the project?</li>
+<li>Which type of deliverable (presentation, static report, dashboard etc.) is
+most appropriate?</li>
+<li>Who will use the deliverables?</li>
+<li>How will they use the deliverables to achieve business impact?</li>
+<li>Have the necessary data been collected, or can they be collected in time to
+analyze them and act upon the analysis?</li>
+<li>When the project is done, how and when will we know whether it was successful?</li>
+<li>Who will agree to review my work for quality?</li>
+<li>Where and when will I present or distribute my work to its intended users?</li>
+</ul>
+<p>Review this document with a peer or your manager first if possible, and then
+with the customer, to align their expectations. Revise it as needed to achieve
+agreement, but don&rsquo;t force it if the case isn&rsquo;t compelling or you can&rsquo;t get
+clarity.</p>
+<p>Many, if not most, data science project ideas should be terminated at this stage
+for reasons such as there isn&rsquo;t a clear problem-solution fit, there is no
+decisionmaker who can act upon the findings, or the desired data doesn&rsquo;t exist
+and can&rsquo;t be collected in time.</p>
+<p>Beware of project ideas that constitute a post-hoc analysis to justify a
+decision that&rsquo;s already been made or a program that&rsquo;s already launched. These
+sorts of projects are not actionable, tend to get political, and are subject to
+<a href="https://towardsdatascience.com/focus-on-decisions-not-outcomes-bf6e99cf5e4f">outcome
+bias</a>,
+where a decision is evaluated using information that was unknowable to the
+decisionmaker at the time.</p>
+<p>Also beware of the &ldquo;solution in search of a problem,&rdquo; where you pick the kind of
+model you want to develop first and then try to find data, use cases and users
+for it. This mode of work is common in data science teams and it doesn&rsquo;t work
+well when your goal is to influence business decisions rather than to conduct
+research.</p>
+<h2 id="analysis">Analysis</h2>
+<p>This is the exploratory data analysis (EDA) phase. Locate and study the data
+sources and determine their provenance. Start writing queries to profile and
+extract the data. Start an R or Python script for plotting the data
+distributions. Don&rsquo;t spend a lot of time on writing clean, maintainable code at
+this point, it&rsquo;s likely to be throwaway work. Your goal here is to get familiar
+with the data and identify its problems and limitations.</p>
+<h3 id="data-provenance-questions">Data provenance questions</h3>
+<ul>
+<li>Where are the necessary data for this project located?</li>
+<li>How was the data collected? What, if any, sampling method was used?</li>
+<li>Who owns the data sources, what level of support do they offer, and
+how will we contact each other if there is a problem?</li>
+<li>How often will we need to refresh the data from the source, and is the source
+updated at least that often?</li>
+</ul>
+<h3 id="data-profiling-questions">Data profiling questions</h3>
+<ul>
+<li>What is the user/customer ID grain?</li>
+<li>What is the time grain?</li>
+<li>What are the variables, their data types and business meanings?</li>
+<li>What should be the dependent variable? Is it present in the data? How is it
+distributed?</li>
+<li>What is the distribution of each ordinal and nominal categorical variable?</li>
+<li>What are the distributions and moments of each integer or real variable?</li>
+<li>What are the pairwise joint distributions and correlations among the variables?</li>
+<li>Which variables have missing data and what are the reasons for missingness?
+Missing data in business are usually missing not at random (MNAR), so what is
+the pattern?</li>
+<li>Can I tell if there are missing observations? Are they missing for certain
+classes or on certain dates?</li>
+<li>Do any variables have extreme outliers? Can I find out how they happen?</li>
+<li>Are the observations
+<a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">IID</a>?</li>
+</ul>
+<p>Reasons to cancel a project at this phase would be discovering that the data are
+inaccessible, unreliable, no longer maintained or supported, or are of
+insufficient quantity, quality or completeness to produce a deliverable data
+product that meets the goals of the project. If you&rsquo;re working on an otherwise
+promising project and find a dealbreaker in the data, it behooves you to give
+specific, actionable feedback to the customer and data owner so that they have
+an opportunity to correct the problem for future work.</p>
+<h2 id="development">Development</h2>
+<p>The development stage of the project is where you build your deliverable data
+product&ndash;you write code, develop models, craft visualizations, and document your
+findings. Unlike the EDA phase where your code can be throwaway scripts or
+notebooks, here you&rsquo;ll want to start introducing some structure (and comments,
+and documentation) to your project because it will allow you to change and
+re-run steps without manual rework, and will also help your peers who need to
+understand and review your work.</p>
+<h3 id="modeling-tasks">Modeling tasks</h3>
+<p>For many of us, building a predictive or causal model is the fun part of data
+science. But before jumping into modeling, ask yourself a few questions to
+determine if it&rsquo;s really worth building a model at all:</p>
+<ul>
+<li>Is the model attempting to automate a human decision? How often does that
+human decision need to be made, how much labor does it require, and what is
+the human error rate?</li>
+<li>What is a simple heuristic baseline model for the task and how well does it
+perform?</li>
+<li>Does the improved performance of a more complex model justify the increase in
+complexity and resource-intensiveness and decrease in interpretability?</li>
+<li>How will the model outputs be consumed by a system, business process, or human
+decisionmaker?</li>
+<li>What is the cost of a false positive (or overestimation) relative to a false
+negative (or underestimation)?</li>
+<li>If the data is wholly or partially labeled, where do the labels come from? Can
+I detect any label noise?</li>
+<li>Could a model predict the label before the point in time when it is needed in
+the business process?</li>
+<li>What is the appropriate unit for random sampling or assignment?</li>
+<li>What validation or model selection strategy is appropriate?</li>
+<li>What biases and confounders could exist in the data and how will I control for
+them? (This is the paramount question for a causal model, but even for
+purely predictive models, biases can cause serious problems!)</li>
+<li>How will I assess model residuals to understand how the model fails, and
+compare these to the errors produced by the existing business process?</li>
+<li>Is there potential for unfair or disparate impact on human subjects? How can I
+address this?</li>
+</ul>
+<p>The field of machine learning is littered with failed projects where a
+predictive model sounded like a good idea, but the turned out not to be an
+improvement over the existing process. For a timely example, see <em>Nature</em>&rsquo;s
+<a href="https://www.nature.com/articles/s42256-021-00307-0">meta-analysis of COVID-19 detection and prognostication
+models</a> that found none of
+the 62 studies reviewed produced anything usable in practice.</p>
+<h3 id="visualization-tasks">Visualization tasks</h3>
+<p>It&rsquo;s easy to create clutter and confuse your audience when presenting data in
+plots. For each data visualization that will be included in a deck, report or
+dashboard, consider whether and why the plot is necessary:</p>
+<ul>
+<li>Is the visual intended to:
+<ul>
+<li>show change in a metric or progress toward a goal over time</li>
+<li>compare multiple groups by a metric</li>
+<li>characterize the distribution of a metric within a group</li>
+<li>compare distributions of a metric across two or more groups</li>
+<li>depict a relationship between two or more variables</li>
+<li>call attention to outliers</li>
+<li>show the performance of a model</li>
+</ul>
+</li>
+<li>Does the visual require interactivity? <em>Does it, though?</em></li>
+<li>How often should the viewer look at the visual? (Once? Weekly? Monthly?)</li>
+<li>Would the plot be better as a table?</li>
+</ul>
+<h3 id="metrics-tasks">Metrics tasks</h3>
+<p>For some data science projects, the primary deliverable is a metric, typically
+visualized on some dashboard that&rsquo;s refreshed every hour, day, week or month. If
+you are designing and implementing a new metric, consider:</p>
+<ul>
+<li>How does the metric relate to customer success or other business objectives?</li>
+<li>Is higher better or worse?</li>
+<li>Is there a goal or target?</li>
+<li>How is it flawed as a proxy of what you really want to measure?</li>
+<li>Is it being used to measure the performance of a person or team?</li>
+<li>How might it be &ldquo;gamed&rdquo; or introduce a perverse incentive or feedback loop?</li>
+</ul>
+<p>You get what you measure (and reward), for better or for worse. A badly designed
+metric can do much more damage than not measuring at all, so <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart&rsquo;s
+law</a> and its many corollaries
+should be in the front of your mind when designing metrics, especially those
+that attempt to quantify the achievements of human workers, because the act of
+measuring will cause their behavior to change in unintended ways.</p>
+<h3 id="presentation">Presentation</h3>
+<p>For each slide or report section, ask yourself critical questions about why it
+belongs and what purpose it serves. Your audience is giving you their precious
+time and attention, so maximize the value they get in return.</p>
+<ul>
+<li>What is my finding? (Lead with the punchline)</li>
+<li>What is the evidence and how does it support the finding?</li>
+<li>What are the limitations of the evidence? What untestable assumptions did I
+have to make? (Savvy audiences will ask!)</li>
+<li>What is the business implication of the finding?</li>
+<li>What am I asking the viewer to do with this information?</li>
+<li>What are the obvious questions that a viewer would ask when they see this?</li>
+</ul>
+<h2 id="validation">Validation</h2>
+<p>Validation is a chance to check if you made the right thing and made the thing
+right. Seek input from peers to determine if the deliverables need any quality
+improvements, and from stakeholders as appropriate to determine if the
+deliverables (still) meet the business need identified at the start of the
+project. Do this throughout the project, particularly if it&rsquo;s on the larger side
+or if you&rsquo;re working on something that makes sense to develop iteratively, but
+you should always have some sort of quality gate before you &ldquo;ship.&rdquo;</p>
+<ul>
+<li>Does the original business problem or need for the project deliverable still
+exist? What changed in the meantime?</li>
+<li>Are my code files source-controlled and my datasets backed up?</li>
+<li>Can I reproduce the deliverable from the raw data in one step? Do the
+quantitative results turn out the same after I re-run the entire process?</li>
+<li>Has a peer read over my queries, code and report to check them for errors?</li>
+<li>Have I shown a draft or pre-release version to a customer to validate
+that the deliverable meets their needs?</li>
+</ul>
+<h2 id="release">Release</h2>
+<p>The release stage is where you deliver the presentation, publish the
+paper, or deploy the model or dashboard to production.</p>
+<p>For a production model or dashboard, someone will need to support it, so before
+you deploy it, ask questions like:</p>
+<ul>
+<li>What are the ongoing maintenance responsibilities?</li>
+<li>What computing resources are required to operate in production?</li>
+<li>What monitoring and alerts are required?</li>
+<li>How will I track user adoption and engagement?</li>
+</ul>
+<p>For a report or presentation:</p>
+<ul>
+<li>Did I successfully deliver my work to its intended consumer?</li>
+<li>If so, what were the decisions and follow-up actions?</li>
+<li>Did the stakeholder commit to taking any recommended action based on my work?
+Why or why not?</li>
+</ul>
+<p>Finally, it&rsquo;s a good idea to have a project retrospective discussion or written
+report that summarizes, without blaming any individuals or teams, what went
+right, what went wrong, and what lessons were learned that could be applied to
+future work.</p>
+<p>While I&rsquo;ve attempted to make this guide sufficiently general to apply to a broad
+swath of business data science projects, every project is a little different, so
+ask the critical questions that make the most sense for your project. So long as
+you start small, fail fast, and insist on actionable results, you should see an
+improved return on your time investment in your projects.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Fighting Fakes Fairly</title>

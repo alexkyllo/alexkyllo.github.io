@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Questions to ask to keep your data science projects on track">
+<meta itemprop="description" content="Data science projects fail a lot. It&rsquo;s highly speculative work, so as a data scientist, some crucial career skills are knowing how to assess the viability of a project, when to cut your losses, and why things didn&rsquo;t work out, so that you can learn from it and adjust your approach. I&rsquo;ve put together a list of questions to ask at each stage in a project&rsquo;s lifecycle, to help you avoid wasting your precious time on projects that are not going to make it.">
+<meta itemprop="datePublished" content="2022-01-02T22:16:24-08:00" />
+<meta itemprop="dateModified" content="2022-01-02T22:16:24-08:00" />
+<meta itemprop="wordCount" content="2070">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta property="og:title" content="Questions to ask to keep your data science projects on track" />
+<meta property="og:description" content="Data science projects fail a lot. It&rsquo;s highly speculative work, so as a data scientist, some crucial career skills are knowing how to assess the viability of a project, when to cut your losses, and why things didn&rsquo;t work out, so that you can learn from it and adjust your approach. I&rsquo;ve put together a list of questions to ask at each stage in a project&rsquo;s lifecycle, to help you avoid wasting your precious time on projects that are not going to make it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alexkyllo.com/posts/questions-to-ask/" />
+<meta property="article:published_time" content="2022-01-02T22:16:24-08:00" />
+<meta property="article:modified_time" content="2022-01-02T22:16:24-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Questions to ask to keep your data science projects on track"/>
+<meta name="twitter:description" content="Data science projects fail a lot. It&rsquo;s highly speculative work, so as a data scientist, some crucial career skills are knowing how to assess the viability of a project, when to cut your losses, and why things didn&rsquo;t work out, so that you can learn from it and adjust your approach. I&rsquo;ve put together a list of questions to ask at each stage in a project&rsquo;s lifecycle, to help you avoid wasting your precious time on projects that are not going to make it."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Questions to ask to keep your data science projects on track</title>
+	<link rel="stylesheet" href="https://alexkyllo.com/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://alexkyllo.com">Alex Kyllo</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://alexkyllo.com/posts/">Posts</a>
+				<a href="https://alexkyllo.com/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/alexkyllo" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/alexkyllo" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://linkedin.com/in/alexkyllo" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://alexkyllo.com/posts/">Posts</a></li>
+			<li><a href="https://alexkyllo.com/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 2, 2022</span></div>
+				<h1>Questions to ask to keep your data science projects on track</h1>
+			</header>
+			<div class="content">
+				<p>Data science projects fail a lot. It&rsquo;s highly speculative work, so as a data
+scientist, some crucial career skills are knowing how to assess the viability of
+a project, when to cut your losses, and why things didn&rsquo;t work out, so that you
+can learn from it and adjust your approach. I&rsquo;ve put together a list of
+questions to ask at each stage in a project&rsquo;s lifecycle, to help you avoid
+wasting your precious time on projects that are not going to make it.</p>
+<p>I&rsquo;m assuming the general sort of projects that I have experience with: small
+business data science projects (think one to a few people over one to a few
+months), which we can roughly break down into a generic five-phase lifecycle:</p>
+<ol>
+<li>Scoping</li>
+<li>Analysis</li>
+<li>Development</li>
+<li>Validation</li>
+<li>Release</li>
+</ol>
+<p>This is not a prescriptive procedure but a rubric to help you assess progress
+and viability. If you&rsquo;re not sure how to move your project forward or whether
+it&rsquo;s even worth investing further time into, the answers to these questions may
+help you decide the best next steps.</p>
+<h2 id="scoping">Scoping<a href="#scoping" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Have discussions with the proposed project&rsquo;s customers and write a one-pager
+that answers the following questions:</p>
+<ul>
+<li>What is the business decision or problem motivating the project?</li>
+<li>Which type of deliverable (presentation, static report, dashboard etc.) is
+most appropriate?</li>
+<li>Who will use the deliverables?</li>
+<li>How will they use the deliverables to achieve business impact?</li>
+<li>Have the necessary data been collected, or can they be collected in time to
+analyze them and act upon the analysis?</li>
+<li>When the project is done, how and when will we know whether it was successful?</li>
+<li>Who will agree to review my work for quality?</li>
+<li>Where and when will I present or distribute my work to its intended users?</li>
+</ul>
+<p>Review this document with a peer or your manager first if possible, and then
+with the customer, to align their expectations. Revise it as needed to achieve
+agreement, but don&rsquo;t force it if the case isn&rsquo;t compelling or you can&rsquo;t get
+clarity.</p>
+<p>Many, if not most, data science project ideas should be terminated at this stage
+for reasons such as there isn&rsquo;t a clear problem-solution fit, there is no
+decisionmaker who can act upon the findings, or the desired data doesn&rsquo;t exist
+and can&rsquo;t be collected in time.</p>
+<p>Beware of project ideas that constitute a post-hoc analysis to justify a
+decision that&rsquo;s already been made or a program that&rsquo;s already launched. These
+sorts of projects are not actionable, tend to get political, and are subject to
+<a href="https://towardsdatascience.com/focus-on-decisions-not-outcomes-bf6e99cf5e4f">outcome
+bias</a>,
+where a decision is evaluated using information that was unknowable to the
+decisionmaker at the time.</p>
+<p>Also beware of the &ldquo;solution in search of a problem,&rdquo; where you pick the kind of
+model you want to develop first and then try to find data, use cases and users
+for it. This mode of work is common in data science teams and it doesn&rsquo;t work
+well when your goal is to influence business decisions rather than to conduct
+research.</p>
+<h2 id="analysis">Analysis<a href="#analysis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>This is the exploratory data analysis (EDA) phase. Locate and study the data
+sources and determine their provenance. Start writing queries to profile and
+extract the data. Start an R or Python script for plotting the data
+distributions. Don&rsquo;t spend a lot of time on writing clean, maintainable code at
+this point, it&rsquo;s likely to be throwaway work. Your goal here is to get familiar
+with the data and identify its problems and limitations.</p>
+<h3 id="data-provenance-questions">Data provenance questions<a href="#data-provenance-questions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>Where are the necessary data for this project located?</li>
+<li>How was the data collected? What, if any, sampling method was used?</li>
+<li>Who owns the data sources, what level of support do they offer, and
+how will we contact each other if there is a problem?</li>
+<li>How often will we need to refresh the data from the source, and is the source
+updated at least that often?</li>
+</ul>
+<h3 id="data-profiling-questions">Data profiling questions<a href="#data-profiling-questions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>What is the user/customer ID grain?</li>
+<li>What is the time grain?</li>
+<li>What are the variables, their data types and business meanings?</li>
+<li>What should be the dependent variable? Is it present in the data? How is it
+distributed?</li>
+<li>What is the distribution of each ordinal and nominal categorical variable?</li>
+<li>What are the distributions and moments of each integer or real variable?</li>
+<li>What are the pairwise joint distributions and correlations among the variables?</li>
+<li>Which variables have missing data and what are the reasons for missingness?
+Missing data in business are usually missing not at random (MNAR), so what is
+the pattern?</li>
+<li>Can I tell if there are missing observations? Are they missing for certain
+classes or on certain dates?</li>
+<li>Do any variables have extreme outliers? Can I find out how they happen?</li>
+<li>Are the observations
+<a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">IID</a>?</li>
+</ul>
+<p>Reasons to cancel a project at this phase would be discovering that the data are
+inaccessible, unreliable, no longer maintained or supported, or are of
+insufficient quantity, quality or completeness to produce a deliverable data
+product that meets the goals of the project. If you&rsquo;re working on an otherwise
+promising project and find a dealbreaker in the data, it behooves you to give
+specific, actionable feedback to the customer and data owner so that they have
+an opportunity to correct the problem for future work.</p>
+<h2 id="development">Development<a href="#development" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The development stage of the project is where you build your deliverable data
+product&ndash;you write code, develop models, craft visualizations, and document your
+findings. Unlike the EDA phase where your code can be throwaway scripts or
+notebooks, here you&rsquo;ll want to start introducing some structure (and comments,
+and documentation) to your project because it will allow you to change and
+re-run steps without manual rework, and will also help your peers who need to
+understand and review your work.</p>
+<h3 id="modeling-tasks">Modeling tasks<a href="#modeling-tasks" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>For many of us, building a predictive or causal model is the fun part of data
+science. But before jumping into modeling, ask yourself a few questions to
+determine if it&rsquo;s really worth building a model at all:</p>
+<ul>
+<li>Is the model attempting to automate a human decision? How often does that
+human decision need to be made, how much labor does it require, and what is
+the human error rate?</li>
+<li>What is a simple heuristic baseline model for the task and how well does it
+perform?</li>
+<li>Does the improved performance of a more complex model justify the increase in
+complexity and resource-intensiveness and decrease in interpretability?</li>
+<li>How will the model outputs be consumed by a system, business process, or human
+decisionmaker?</li>
+<li>What is the cost of a false positive (or overestimation) relative to a false
+negative (or underestimation)?</li>
+<li>If the data is wholly or partially labeled, where do the labels come from? Can
+I detect any label noise?</li>
+<li>Could a model predict the label before the point in time when it is needed in
+the business process?</li>
+<li>What is the appropriate unit for random sampling or assignment?</li>
+<li>What validation or model selection strategy is appropriate?</li>
+<li>What biases and confounders could exist in the data and how will I control for
+them? (This is the paramount question for a causal model, but even for
+purely predictive models, biases can cause serious problems!)</li>
+<li>How will I assess model residuals to understand how the model fails, and
+compare these to the errors produced by the existing business process?</li>
+<li>Is there potential for unfair or disparate impact on human subjects? How can I
+address this?</li>
+</ul>
+<p>The field of machine learning is littered with failed projects where a
+predictive model sounded like a good idea, but the turned out not to be an
+improvement over the existing process. For a timely example, see <em>Nature</em>&rsquo;s
+<a href="https://www.nature.com/articles/s42256-021-00307-0">meta-analysis of COVID-19 detection and prognostication
+models</a> that found none of
+the 62 studies reviewed produced anything usable in practice.</p>
+<h3 id="visualization-tasks">Visualization tasks<a href="#visualization-tasks" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>It&rsquo;s easy to create clutter and confuse your audience when presenting data in
+plots. For each data visualization that will be included in a deck, report or
+dashboard, consider whether and why the plot is necessary:</p>
+<ul>
+<li>Is the visual intended to:
+<ul>
+<li>show change in a metric or progress toward a goal over time</li>
+<li>compare multiple groups by a metric</li>
+<li>characterize the distribution of a metric within a group</li>
+<li>compare distributions of a metric across two or more groups</li>
+<li>depict a relationship between two or more variables</li>
+<li>call attention to outliers</li>
+<li>show the performance of a model</li>
+</ul>
+</li>
+<li>Does the visual require interactivity? <em>Does it, though?</em></li>
+<li>How often should the viewer look at the visual? (Once? Weekly? Monthly?)</li>
+<li>Would the plot be better as a table?</li>
+</ul>
+<h3 id="metrics-tasks">Metrics tasks<a href="#metrics-tasks" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>For some data science projects, the primary deliverable is a metric, typically
+visualized on some dashboard that&rsquo;s refreshed every hour, day, week or month. If
+you are designing and implementing a new metric, consider:</p>
+<ul>
+<li>How does the metric relate to customer success or other business objectives?</li>
+<li>Is higher better or worse?</li>
+<li>Is there a goal or target?</li>
+<li>How is it flawed as a proxy of what you really want to measure?</li>
+<li>Is it being used to measure the performance of a person or team?</li>
+<li>How might it be &ldquo;gamed&rdquo; or introduce a perverse incentive or feedback loop?</li>
+</ul>
+<p>You get what you measure (and reward), for better or for worse. A badly designed
+metric can do much more damage than not measuring at all, so <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart&rsquo;s
+law</a> and its many corollaries
+should be in the front of your mind when designing metrics, especially those
+that attempt to quantify the achievements of human workers, because the act of
+measuring will cause their behavior to change in unintended ways.</p>
+<h3 id="presentation">Presentation<a href="#presentation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>For each slide or report section, ask yourself critical questions about why it
+belongs and what purpose it serves. Your audience is giving you their precious
+time and attention, so maximize the value they get in return.</p>
+<ul>
+<li>What is my finding? (Lead with the punchline)</li>
+<li>What is the evidence and how does it support the finding?</li>
+<li>What are the limitations of the evidence? What untestable assumptions did I
+have to make? (Savvy audiences will ask!)</li>
+<li>What is the business implication of the finding?</li>
+<li>What am I asking the viewer to do with this information?</li>
+<li>What are the obvious questions that a viewer would ask when they see this?</li>
+</ul>
+<h2 id="validation">Validation<a href="#validation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Validation is a chance to check if you made the right thing and made the thing
+right. Seek input from peers to determine if the deliverables need any quality
+improvements, and from stakeholders as appropriate to determine if the
+deliverables (still) meet the business need identified at the start of the
+project. Do this throughout the project, particularly if it&rsquo;s on the larger side
+or if you&rsquo;re working on something that makes sense to develop iteratively, but
+you should always have some sort of quality gate before you &ldquo;ship.&rdquo;</p>
+<ul>
+<li>Does the original business problem or need for the project deliverable still
+exist? What changed in the meantime?</li>
+<li>Are my code files source-controlled and my datasets backed up?</li>
+<li>Can I reproduce the deliverable from the raw data in one step? Do the
+quantitative results turn out the same after I re-run the entire process?</li>
+<li>Has a peer read over my queries, code and report to check them for errors?</li>
+<li>Have I shown a draft or pre-release version to a customer to validate
+that the deliverable meets their needs?</li>
+</ul>
+<h2 id="release">Release<a href="#release" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The release stage is where you deliver the presentation, publish the
+paper, or deploy the model or dashboard to production.</p>
+<p>For a production model or dashboard, someone will need to support it, so before
+you deploy it, ask questions like:</p>
+<ul>
+<li>What are the ongoing maintenance responsibilities?</li>
+<li>What computing resources are required to operate in production?</li>
+<li>What monitoring and alerts are required?</li>
+<li>How will I track user adoption and engagement?</li>
+</ul>
+<p>For a report or presentation:</p>
+<ul>
+<li>Did I successfully deliver my work to its intended consumer?</li>
+<li>If so, what were the decisions and follow-up actions?</li>
+<li>Did the stakeholder commit to taking any recommended action based on my work?
+Why or why not?</li>
+</ul>
+<p>Finally, it&rsquo;s a good idea to have a project retrospective discussion or written
+report that summarizes, without blaming any individuals or teams, what went
+right, what went wrong, and what lessons were learned that could be applied to
+future work.</p>
+<p>While I&rsquo;ve attempted to make this guide sufficiently general to apply to a broad
+swath of business data science projects, every project is a little different, so
+ask the critical questions that make the most sense for your project. So long as
+you start small, fail fast, and insist on actionable results, you should see an
+improved return on your time investment in your projects.</p>
+
+			</div>
+
+			<hr class="post-end">
+			<footer class="post-info">
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2070 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2022-01-02 22:16 -0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://alexkyllo.com/posts/fake-faces/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Fighting Fakes Fairly</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2022 <a href="https://alexkyllo.com">Alex Kyllo</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://alexkyllo.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://alexkyllo.com/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-38850327-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

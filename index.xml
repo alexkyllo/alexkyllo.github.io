@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alex Kyllo 2020</copyright>
-    <lastBuildDate>Tue, 22 Dec 2020 21:42:53 -0800</lastBuildDate><atom:link href="https://alexkyllo.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 22:16:24 -0800</lastBuildDate><atom:link href="https://alexkyllo.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Questions to ask to keep your data science projects on track</title>
+      <link>https://alexkyllo.com/posts/questions-to-ask/</link>
+      <pubDate>Sun, 02 Jan 2022 22:16:24 -0800</pubDate>
+      
+      <guid>https://alexkyllo.com/posts/questions-to-ask/</guid>
+      <description>Data science projects fail a lot. It&amp;rsquo;s highly speculative work, so as a data scientist, some crucial career skills are knowing how to assess the viability of a project, when to cut your losses, and why things didn&amp;rsquo;t work out, so that you can learn from it and adjust your approach. I&amp;rsquo;ve put together a list of questions to ask at each stage in a project&amp;rsquo;s lifecycle, to help you avoid wasting your precious time on projects that are not going to make it.</description>
+    </item>
+    
     <item>
       <title>Fighting Fakes Fairly</title>
       <link>https://alexkyllo.com/posts/fake-faces/</link>
